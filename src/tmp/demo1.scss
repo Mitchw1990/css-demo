@@ -103,6 +103,93 @@
   }
 }
 
+//EDITS
+&__nav {
+
+  width: 100%; //remove
+  //opacity: 0; //add
+  //width: 0; //add
+}
+
+&__background {
+  transform: scale(80); //remove
+}
+
+
+
+
+//ADDITIONS
+&__checkbox:checked ~ &__background {
+  transform: scale(80);
+}
+
+&__checkbox:checked ~ &__nav {
+  opacity: 1;
+  width: 100%;
+}
+
+
+
+
+//THEN ADD
+&__checkbox:checked ~ &__background {
+  transition: transform .8s cubic-bezier(0.86, 0, 0.07, 1);
+}
+
+&__nav {
+  transition: all .8s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+
+
+//ADDITIONS
+&__icon {
+  position: relative;
+  margin-top: 3.5rem;
+
+  &,
+  &::before,
+  &::after {
+    width: 3rem;
+    height: 2px;
+    background-color: $color-grey-dark-3;
+    display: inline-block;
+  }
+
+  &::before,
+  &::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    transition: all .2s;
+  }
+
+  &::before { top: -.8rem; }
+  &::after { top: .8rem; }
+}
+
+&__button:hover &__icon::before {
+  top: -1rem;
+}
+
+&__button:hover &__icon::after {
+  top: 1rem;
+}
+
+&__checkbox:checked + &__button &__icon {
+  background-color: transparent;
+}
+
+&__checkbox:checked + &__button &__icon::before {
+  top: 0;
+  transform: rotate(135deg);
+}
+
+&__checkbox:checked + &__button &__icon::after {
+  top: 0;
+  transform: rotate(-135deg);
+}
+
 
 
 
